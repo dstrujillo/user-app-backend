@@ -1,36 +1,31 @@
 import express from 'express';
-// const express = require('express');
+import bodyParser from 'body-parser';
+import dotenv from 'dotenv';
 
-import { hello } from '@/routes/index.route';
+import indexRouter from '@/routes/index.route';
+import { connectToMongoDb } from '@/config/mongodb.config';
 
+const port = process.env.PORT || 3000;
 const app = express();
 
-app.get('/', (req, res) => {
-  res.send('<b>You rocks hard</b>');
+dotenv.config();
+app.set('port', port);
+
+// middlewares
+app.use(
+  bodyParser.urlencoded({
+    extended: true
+  })
+);
+app.use(bodyParser.json());
+
+// routes
+app.use('/', indexRouter);
+
+// server listening
+app.listen(app.get('port'), () => {
+  console.log('Example app listening on port ', app.get('port'));
 });
 
-app.listen(3000, () => {
-  console.log('Example app listening on port 3000!');
-});
-
-/* const funcionAsync = () => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            console.log("2 seconds have passed");
-            resolve();
-        }, 2000);
-    });
-}
-
-async function funcionSync(){
-    funcionAsync().then(() =>{
-        console.log("Hello world!");
-    }).catch((error) => {
-        console.log(error);
-    }); // async await
-    
-}
-
-funcionSync();
-
-*/
+// connect to mongodb
+connectToMongoDb();

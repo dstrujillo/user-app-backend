@@ -14,6 +14,7 @@ module.exports = {
     [
       'module-resolver',
       {
+        root: ['./dist'],
         alias: {
           '@/*': './src/*'
         }
