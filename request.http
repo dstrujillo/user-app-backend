@@ -1,5 +1,5 @@
 ###
-GET http://localhost:3000 HTTP/1.1
+GET http://localhost:3000/api/v1/user HTTP/1.1
 
 
 ###
@@ -8,9 +8,19 @@ content-type: application/json
 
 {
     "name": "Daniel T",
-    "email": "d23t@example.com",
+    "email": "daniel11234@el.com",
     "password": "123456"
 }
+
+###
+POST http://localhost:3000/api/v1/user/login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "daniel1234@el.com",
+    "password": "123456"
+}
+
 
 
 ###

@@ -1,6 +1,5 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import dotenv from 'dotenv';
 
 import indexRouter from '@/routes/index.route';
 import { connectToMongoDb } from '@/config/mongodb.config';
@@ -8,7 +7,6 @@ import { connectToMongoDb } from '@/config/mongodb.config';
 const port = process.env.PORT || 3000;
 const app = express();
 
-dotenv.config();
 app.set('port', port);
 
 // middlewares
