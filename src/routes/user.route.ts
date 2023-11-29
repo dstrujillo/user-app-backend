@@ -6,6 +6,7 @@ import {
   getUsersController,
   loginController
 } from '@/controllers/user.controller';
+import { authMiddleware } from '@/middlewares/auth.middleware';
 
 const userRouter = Router();
 
@@ -14,10 +15,13 @@ const userRouter = Router();
 });
 */
 
-userRouter.get('/', getUsersController);
+// Obtenere usuarios
+userRouter.get('/', authMiddleware, getUsersController);
 
-userRouter.post('/', createUserController);
+// Registrar usuarios
+userRouter.post('/register', createUserController);
 
+// Autenticación
 userRouter.post('/login', loginController);
 
 export default userRouter;

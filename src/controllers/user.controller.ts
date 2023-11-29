@@ -1,6 +1,7 @@
 import type { Request, Response } from 'express';
 import Joi from 'joi';
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 import {
   createUserService,
@@ -118,18 +119,37 @@ export const loginController = async (
     return;
   }
 
-  const { email } = loginData;
+  const { email, password } = loginData;
   const user = await getOneUserService({ email });
 
   if (!user) {
-    res.status(404).json({
-      message: 'User not found'
+    res.status(401).json({
+      message: 'Invalid credentials'
     });
     return;
   }
 
+  const comparePassword = await bcrypt.compare(password, user.password);
+
+  if (!comparePassword) {
+    res.status(401).json({
+      message: 'Invalid credentials'
+    });
+    return;
+  }
+
+  const jwtToken = process.env.JWT_API_SECRET_KEY || '';
+
+  const token = jwt.sign(
+    {
+      name: user.name,
+      email: user.email
+    },
+    jwtToken
+  );
+
   res.json({
     message: 'User successfully logged in',
-    user
+    accessToken: token
   });
 };

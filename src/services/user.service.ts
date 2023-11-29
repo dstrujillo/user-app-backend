@@ -12,5 +12,5 @@ export const getOneUserService = async (
   query: Partial<User>
 ): Promise<User | null> => {
   console.log(query);
-  return await UserModel.findOne({ query });
+  return await UserModel.findOne(query);
 };
