@@ -1,5 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 
 import indexRouter from '@/routes/index.route';
 import { connectToMongoDb } from '@/config/mongodb.config';
@@ -9,6 +10,7 @@ const app = express();
 
 app.set('port', port);
 
+app.use(cors());
 // middlewares
 app.use(
   bodyParser.urlencoded({
