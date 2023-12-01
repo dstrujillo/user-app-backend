@@ -20,7 +20,7 @@ userRouter.get('/', authMiddleware, getUsersController);
 // userRouter.get('/', authMiddleware, getUsersController);
 
 // Registrar usuarios
-userRouter.post('/register', createUserController);
+userRouter.post('/signup', createUserController);
 
 // Autenticación
 userRouter.post('/login', loginController);

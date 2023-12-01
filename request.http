@@ -3,12 +3,12 @@ GET http://localhost:3000/api/v1/user HTTP/1.1
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiRGFuaWVsIFQiLCJlbWFpbCI6ImRhbmllbDEyMzRAZWwuY29tIiwiaWF0IjoxNzAxMjIyMjQxfQ.FUjf-_TIL_d81z7SC-Sy3uiod0cEtxuCDfIDJOldhdA
 
 ###
-POST http://localhost:3000/api/v1/user/register HTTP/1.1
+POST http://localhost:3000/api/v1/user/signup HTTP/1.1
 content-type: application/json
 
 {
     "name": "Daniel T",
-    "email": "daniel112344@el.com",
+    "email": "a@el.com",
     "password": "123456"
 }
 
