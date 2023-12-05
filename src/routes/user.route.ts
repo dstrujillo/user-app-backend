@@ -4,6 +4,7 @@ import { Router } from 'express';
 import {
   createUserController,
   getUsersController,
+  getOneUserController,
   loginController
 } from '@/controllers/user.controller';
 import { authMiddleware } from '@/middlewares/auth.middleware';
@@ -17,7 +18,8 @@ const userRouter = Router();
 
 // Obtenere usuarios
 userRouter.get('/', authMiddleware, getUsersController);
-// userRouter.get('/', authMiddleware, getUsersController);
+
+userRouter.get('/:id', authMiddleware, getOneUserController);
 
 // Registrar usuarios
 userRouter.post('/signup', createUserController);

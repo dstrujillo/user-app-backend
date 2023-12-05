@@ -90,9 +90,9 @@ export const getOneUserController = async (
   req: Request,
   res: Response
 ): Promise<void> => {
-  const { email } = req.params;
+  const { id } = req.params;
   try {
-    const user = await getOneUserService({ email });
+    const user = await getOneUserService({ _id: id });
     res.status(200).json({
       message: 'User fetched successfully',
       user
