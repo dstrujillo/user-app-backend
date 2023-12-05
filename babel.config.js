@@ -16,7 +16,7 @@ module.exports = {
       {
         root: ['./dist'],
         alias: {
-          '@/*': './src/*'
+          '@': './dist'
         }
       }
     ]
