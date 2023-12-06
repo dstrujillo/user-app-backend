@@ -145,7 +145,8 @@ export const loginController = async (
       name: user.name,
       email: user.email
     },
-    jwtToken
+    jwtToken,
+    { expiresIn: '1h' }
   );
 
   res.json({
